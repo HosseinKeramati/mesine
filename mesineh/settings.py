@@ -26,10 +26,10 @@ SECRET_KEY = 'ts(&i-rv2))hcv*$vq_$he-6mcv588a1!)ako-#$=al4p_i1*e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+# ALLOWED_HOSTS = ['127.0.0.1']
 
 #server
-# ALLOWED_HOSTS = ['176.223.139.31']
+ALLOWED_HOSTS = ['194.135.90.60']
 
 
 # Application definition
@@ -68,7 +68,7 @@ TEMPLATES = [
 
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,24 +91,24 @@ WSGI_APPLICATION = 'mesineh.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
-    }
-}
-
-#server
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'faterdatabase',
-#         'USER': 'fateruser',
-#         'PASSWORD': 'FaterOriginalPassword',
-#         'HOST': 'localhost',
-#         'PORT': '',
+#         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
 #     }
 # }
+
+#server
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mesinedatabase',
+        'USER': 'youruser',
+        'PASSWORD': 'MessinehOriginalPassword',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 
 
@@ -206,9 +206,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
 
-STATICFILES_DIRS = [
-os.path.join(BASE_DIR, "static"),
-]
+# STATICFILES_DIRS = [
+# os.path.join(BASE_DIR, "static"),
+# ]
 
 MEDIA_URL = '/Back_end_Media/'
 MEDIA_ROOT = 'Back_end_Media/'
