@@ -18,6 +18,18 @@ class رسانه(models.Model):
         return str(self.شناسه)
 
 
+class ارزش_های_پیشنهادی(models.Model):
+
+    شناسه = models.AutoField(primary_key=True)
+    ارزش_پیشنهادی = models.CharField(max_length=500)
+    شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
+    حذف = models.IntegerField(default = 0 , help_text= "در این قسمت هر عددی که جایگزین 0 شود به معنی حذف شدن این نمونه از سایت است.")
+
+    class Meta:
+        verbose_name_plural = "ارزش_های_پیشنهادی"
+
+    def __str__(self):
+            return self.ارزش_پیشنهادی
 
 class منوی_محبوب_رستوران(models.Model):
 

@@ -32,6 +32,7 @@ admin.site.index_title = "به پورتال مدیریت رستوران مسین
 
 
 admin.site.register(رسانه,Pro)
+admin.site.register(ارزش_پیشنهادی)
 # admin.site.register(User_type)
 # admin.site.register(User)
 admin.site.register(منوی_محبوب_رستوران)
