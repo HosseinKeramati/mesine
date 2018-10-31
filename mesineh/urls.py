@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^back_end/homepage-banner/',homepage.banner,name='banner'),
     url(r'^back_end/services/',homepage.services,name='services'),
     url(r'^back_end/favorite/',homepage.favorite,name='favorite'),
+    url(r'^back_end/value_proposition/',homepage.value_proposition,name='value_proposition'),
     # url(r'^back_end/assist-company/',homepage.assist_company,name='assist_company'),
     # url(r'^back_end/value-proposition/',homepage.value_proposition,name='value_proposition'),
     # url(r'^back_end/other-program/',homepage.other_program,name='other_program'),

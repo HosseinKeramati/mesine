@@ -154,40 +154,39 @@ def banner(request):
 #
 #     return JsonResponse(result,json_dumps_params={'indent': 2},safe=False,)
 #
-# def value_proposition(request):
-#     value = Value_proposition.objects.filter(deleted = 0).select_related('media_id')
-#     value_proposition_list = []
-#     i=0
-#     for items in list(value.values()):
-#         valu_ob = {}
-#         valu_ob['caption'] = items['caption']
-#         valu_ob['title'] = items['title']
-#         media = {}
-#         if (value[i].media_id.deleted == 0):
-#             media['image'] = value[i].media_id.file.name
-#             media['caption']=value[i].media_id.description
-#             media['title'] = value[i].media_id.title
-#             media['alt'] = value[i].media_id.alt
-#             value_proposition_list.append({
-#             'media': media,
-#             'value_proposition_info': valu_ob
-#             })
-#             i=i+1
-#         else:
-#             value_proposition_list.append({
-#             'media': "deleted" ,
-#             'valu_proposition_info': valu_ob
-#             })
-#             i=i+1
-#
-#                 # value_proposition_list.append(valu_ob)
-#     result = {
-#     "ok" : True,
-#     "status_code": 200,
-#     "result": value_proposition_list
-#     }
-#     return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)
-#
+def value_proposition(request):
+    value = ارزش_های_پیشنهادی.objects.filter(حذف = 0).select_related('شناسه_عکس')
+    value_proposition_list = []
+    i=0
+    for items in list(value.values()):
+        valu_ob = {}
+        valu_ob['propose_value'] = items['ارزش_پیشنهادی']
+        media = {}
+        if (value[i].شناسه_عکس.حذف == 0):
+            media['image'] = value[i].شناسه_عکس.فایل.name
+            media['caption']=value[i].شناسه_عکس.توضیح
+            media['title'] = value[i].شناسه_عکس.عنوان
+            media['alt'] = value[i].شناسه_عکس.جایگزین
+            value_proposition_list.append({
+            'media': media,
+            'value_proposition_info': valu_ob
+            })
+            i=i+1
+        else:
+            value_proposition_list.append({
+            'media': "deleted" ,
+            'valu_proposition_info': valu_ob
+            })
+            i=i+1
+
+                # value_proposition_list.append(valu_ob)
+    result = {
+    "ok" : True,
+    "status_code": 200,
+    "result": value_proposition_list
+    }
+    return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)
+
 #
 # def other_program(request):
 #     other_p = Other_program.objects.filter(deleted = 0).select_related('media_id')
