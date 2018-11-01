@@ -1,11 +1,14 @@
 {% extends "admin/base.html" %}
 
-{% load staticfiles %}
+{% load static i18n %}
+
+{# Setup favicon #}
+{% block extrahead %}<link rel="shortcut icon" type="image/png" href="{{MEDIA_URL}}logo.png"/>{% endblock %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}"><img src="{% static 'logo.png' %}" height="40px"</a></h1>
+<h1 id="site-name"><a href="{% url 'admin:index' %}"><img src="{{MEDIA_URL}} 'logo.png'" alt= "MESSI NEH" height="40px"</a></h1>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}

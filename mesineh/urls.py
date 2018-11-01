@@ -1,4 +1,4 @@
-from django.conf.urls import url,include
+from django.conf.urls import  url, include
 from django.contrib import admin
 from mesineapp import views
 from mesineapp.controllers import homepage,collection,news,footer,menu,logo,sendmail,contact_us,media,aboutus,food,header,social_network
@@ -11,10 +11,13 @@ from django.conf import settings
 
 
 urlpatterns = [
-    url(r'^back_end/admin/', admin.site.urls),
+    # url(r'^back_end/admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    # url(r'^back_end/value_proposition/',site.value_proposition,name='value_proposition'),
-    # url(r'^value_proposition/',include('value_proposition.urls')),
+
+    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    url(r'^back_end/admin/', admin.site.urls),
+
     url(r'^back_end/homepage-banner/',homepage.banner,name='banner'),
     url(r'^back_end/services/',homepage.services,name='services'),
     url(r'^back_end/favorite/',homepage.favorite,name='favorite'),
