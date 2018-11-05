@@ -26,10 +26,10 @@ SECRET_KEY = 'ts(&i-rv2))hcv*$vq_$he-6mcv588a1!)ako-#$=al4p_i1*e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 #server
-ALLOWED_HOSTS = ['194.135.90.60']
+# ALLOWED_HOSTS = ['194.135.90.60']
 
 
 # Application definition
@@ -37,13 +37,13 @@ ALLOWED_HOSTS = ['194.135.90.60']
 INSTALLED_APPS = [
     'jet.dashboard',
     'jet',
+    'mesineapp',
     'django.contrib.contenttypes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mesineapp',
     'ckeditor',
     'ckeditor_uploader',
 
@@ -91,7 +91,7 @@ JET_THEMES = [
     }
 ]
 JET_SIDE_MENU_COMPACT = True
-JET_CHANGE_FORM_SIBLING_LINKS = True
+# JET_CHANGE_FORM_SIBLING_LINKS = True
 JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
 
 # ROOT_URLCONF = 'fater.urls'
@@ -105,7 +105,7 @@ TEMPLATES = [
 
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,24 +128,24 @@ WSGI_APPLICATION = 'mesineh.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#         'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
-#     }
-# }
-
-#server
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mesinedatabase',
-        'USER': 'youruser',
-        'PASSWORD': 'MessinehOriginalPassword',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
     }
 }
+
+#server
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'mesinedatabase',
+#         'USER': 'youruser',
+#         'PASSWORD': 'MessinehOriginalPassword',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 
@@ -228,7 +228,7 @@ EMAIL_HOST_PASSWORD = "Messi..Neh20"
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'fa-ir'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Tehran'
 
@@ -243,9 +243,9 @@ USE_TZ = True
 STATIC_URL = '/static_back_end/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_back_end')
 
-# STATICFILES_DIRS = [
-# os.path.join(BASE_DIR, "static"),
-# ]
+STATICFILES_DIRS = [
+# os.path.join(BASE_DIR, "static_back_end"),
+]
 
 MEDIA_URL = '/Back_end_Media/'
 MEDIA_ROOT = 'Back_end_Media/'

@@ -1,14 +1,15 @@
 {% extends "admin/base.html" %}
 
-{% load static i18n %}
+{% load static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static 'override.css' %}" />{% endblock %}
 
 {# Setup favicon #}
-{% block extrahead %}<link rel="shortcut icon" type="image/png" href="{{MEDIA_URL}}logo.png"/>{% endblock %}
+{% block extrahead %}<link rel="shortcut icon" type="image/png" href="{{MEDIA_URL}} https://preview.ibb.co/exuba0/photo-2018-09-15-09-53-52.png " height="45px" width = "80" />{% endblock %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}"><img src="{{MEDIA_URL}} 'logo.png'" alt= "MESSI NEH" height="40px"</a></h1>
+<h1 id="site-name"><a href="{% url 'admin:index' %}"><img src="{{MEDIA_URL}} https://preview.ibb.co/exuba0/photo-2018-09-15-09-53-52.png" alt= "MESSI NEH" height="65px" width = "120"</a></h1>
 {% endblock %}
-
 {% block nav-global %}{% endblock %}
