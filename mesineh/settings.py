@@ -247,5 +247,5 @@ STATICFILES_DIRS = [
 os.path.join(BASE_DIR, "static_back_end"),
 ]
 
-MEDIA_URL = '/Back_end_Media/'
-MEDIA_ROOT = 'Back_end_Media/'
+MEDIA_URL = '/static_back_end/'
+MEDIA_ROOT = 'static_back_end/'
