@@ -91,8 +91,33 @@ JET_THEMES = [
     }
 ]
 JET_SIDE_MENU_COMPACT = True
+JET_DEFAULT_THEME = 'light-gray'
 # JET_CHANGE_FORM_SIBLING_LINKS = True
 JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
+
+JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+
+JET_SIDE_MENU_ITEMS = [ # A list of application or custom item dicts
+    {'label': ('مسینه'), 'app_label': 'core', 'items': [
+        {'label': ('ارزش های پیشنهادی'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%A7%D8%B1%D8%B2%D8%B4_%D9%87%D8%A7%DB%8C_%D9%BE%DB%8C%D8%B4%D9%86%D9%87%D8%A7%D8%AF%DB%8C/'},
+        {'label': ('بنر ها'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%A8%D9%86%D8%B1/' },
+        {'label': ('تماس با ما'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%AA%D9%85%D8%A7%D8%B3_%D8%A8%D8%A7_%D9%85%D8%A7/' },
+        {'label': ('خبر ها'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%AE%D8%A8%D8%B1/' },
+        {'label': ('درباره ما'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87_%D9%85%D8%A7/' },
+        {'label': ('سربرگ'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%B3%D8%B1%D8%A8%D8%B1%DA%AF/' },
+        {'label': ('سرویس ها'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%B3%D8%B1%D9%88%DB%8C%D8%B3/' },
+        {'label': ('شبکه اجتماعی'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%B4%D8%A8%DA%A9%D9%87_%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%DB%8C/' },
+        {'label': ('لوگو'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D9%84%D9%88%DA%AF%D9%88/' },
+        {'label': ('منوی غذا'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D9%85%D9%86%D9%88%DB%8C_%D8%BA%D8%B0%D8%A7/' },
+        {'label': ('منوی محبوب رستوران'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D9%85%D9%86%D9%88%DB%8C_%D9%85%D8%AD%D8%A8%D9%88%D8%A8_%D8%B1%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D9%86/' },
+        {'label': ('پانویس'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D9%BE%D8%A7%D9%86%D9%88%DB%8C%D8%B3/' },
+
+    ]},
+    {'label': ('مدیریت'), 'items': [
+        {'name': 'auth.user'},
+        {'name': 'auth.group'},
+    ]},
+]
 
 # ROOT_URLCONF = 'fater.urls'
 
@@ -184,11 +209,11 @@ CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery
 CKEDITOR_UPLOAD_PATH = 'Mediastorage/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': None,
-    },
-}
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': None,
+#     },
+# }
 
 ###################################
 CKEDITOR_CONFIGS = {
@@ -241,11 +266,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static_back_end/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static_back_end')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_back_end')
 
-STATICFILES_DIRS = [
-os.path.join(BASE_DIR, "static_back_end"),
-]
+# STATICFILES_DIRS = [
+# os.path.join(BASE_DIR, "static_back_end"),
+# ]
 
 MEDIA_URL = '/Back_end_Media/'
 MEDIA_ROOT = 'Back_end_Media/'

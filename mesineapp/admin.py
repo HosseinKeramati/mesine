@@ -2,13 +2,17 @@ from django.contrib import admin
 from mesineapp.models import *
 # register your models hereself.
 from django.contrib.auth.models import User, Group
-from django.utils.translation import ugettext_lazy
+from jet.admin import CompactInline
+from django.utils.translation import ugettext_lazy as _
+from jet.dashboard import modules
+from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
 
 # admin.site.unregister(User)
 # admin.site.unregister(Group)
 
+
 class Pro(admin.ModelAdmin):
-    list_display = ('شناسه', 'عنوان' ,'حذف',)
+    list_display = ( 'شناسه', 'فایل', 'عنوان' ,'حذف',)
     list_filter = ('عنوان',)
     search_fields = ('عنوان',)
     prepopulated_fields = {}     #dictionary needed for seo
