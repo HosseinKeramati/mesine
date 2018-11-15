@@ -26,9 +26,11 @@ SECRET_KEY = 'ts(&i-rv2))hcv*$vq_$he-6mcv588a1!)ako-#$=al4p_i1*e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ip='http://127.0.0.1'
 # ALLOWED_HOSTS = ['127.0.0.1']
 
 #server
+ip='http://194.135.90.60'
 ALLOWED_HOSTS = ['194.135.90.60']
 
 
@@ -99,18 +101,18 @@ JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
 
 JET_SIDE_MENU_ITEMS = [ # A list of application or custom item dicts
     {'label': ('مسینه'), 'app_label': 'core', 'items': [
-        {'label': ('ارزش های پیشنهادی'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%A7%D8%B1%D8%B2%D8%B4_%D9%87%D8%A7%DB%8C_%D9%BE%DB%8C%D8%B4%D9%86%D9%87%D8%A7%D8%AF%DB%8C/'},
-        {'label': ('بنر ها'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%A8%D9%86%D8%B1/' },
-        {'label': ('تماس با ما'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%AA%D9%85%D8%A7%D8%B3_%D8%A8%D8%A7_%D9%85%D8%A7/' },
-        {'label': ('خبر ها'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%AE%D8%A8%D8%B1/' },
-        {'label': ('درباره ما'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87_%D9%85%D8%A7/' },
-        {'label': ('سربرگ'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%B3%D8%B1%D8%A8%D8%B1%DA%AF/' },
-        {'label': ('سرویس ها'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%B3%D8%B1%D9%88%DB%8C%D8%B3/' },
-        {'label': ('شبکه اجتماعی'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D8%B4%D8%A8%DA%A9%D9%87_%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%DB%8C/' },
-        {'label': ('لوگو'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D9%84%D9%88%DA%AF%D9%88/' },
-        {'label': ('منوی غذا'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D9%85%D9%86%D9%88%DB%8C_%D8%BA%D8%B0%D8%A7/' },
-        {'label': ('منوی محبوب رستوران'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D9%85%D9%86%D9%88%DB%8C_%D9%85%D8%AD%D8%A8%D9%88%D8%A8_%D8%B1%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D9%86/' },
-        {'label': ('پانویس'), 'url': 'http://127.0.0.1:8000/back_end/admin/mesineapp/%D9%BE%D8%A7%D9%86%D9%88%DB%8C%D8%B3/' },
+        {'label': ('ارزش های پیشنهادی'), 'url':  ip + '/back_end/admin/mesineapp/%D8%A7%D8%B1%D8%B2%D8%B4_%D9%87%D8%A7%DB%8C_%D9%BE%DB%8C%D8%B4%D9%86%D9%87%D8%A7%D8%AF%DB%8C/'},
+        {'label': ('بنر ها'), 'url':  ip + '/back_end/admin/mesineapp/%D8%A8%D9%86%D8%B1/' },
+        {'label': ('تماس با ما'), 'url':  ip + '/back_end/admin/mesineapp/%D8%AA%D9%85%D8%A7%D8%B3_%D8%A8%D8%A7_%D9%85%D8%A7/' },
+        {'label': ('خبر ها'), 'url':  ip + '/back_end/admin/mesineapp/%D8%AE%D8%A8%D8%B1/' },
+        {'label': ('درباره ما'), 'url':  ip + '/back_end/admin/mesineapp/%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87_%D9%85%D8%A7/' },
+        {'label': ('سربرگ'), 'url':  ip + '/back_end/admin/mesineapp/%D8%B3%D8%B1%D8%A8%D8%B1%DA%AF/' },
+        {'label': ('سرویس ها'), 'url':  ip + '/back_end/admin/mesineapp/%D8%B3%D8%B1%D9%88%DB%8C%D8%B3/' },
+        {'label': ('شبکه اجتماعی'), 'url':  ip + '/back_end/admin/mesineapp/%D8%B4%D8%A8%DA%A9%D9%87_%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%DB%8C/' },
+        {'label': ('لوگو'), 'url':  ip + '/back_end/admin/mesineapp/%D9%84%D9%88%DA%AF%D9%88/' },
+        {'label': ('منوی غذا'), 'url':  ip + '/back_end/admin/mesineapp/%D9%85%D9%86%D9%88%DB%8C_%D8%BA%D8%B0%D8%A7/' },
+        {'label': ('منوی محبوب رستوران'), 'url':  ip + '/back_end/admin/mesineapp/%D9%85%D9%86%D9%88%DB%8C_%D9%85%D8%AD%D8%A8%D9%88%D8%A8_%D8%B1%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D9%86/' },
+        {'label': ('پانویس'), 'url':  ip + '/back_end/admin/mesineapp/%D9%BE%D8%A7%D9%86%D9%88%DB%8C%D8%B3/' },
 
     ]},
     {'label': ('مدیریت'), 'items': [
