@@ -54,6 +54,7 @@ def news_card(request):
                 info={}
                 info['id'] = cat[i]['شناسه']
                 info['title'] = cat[i]['عنوان_خبر']
+                info['date'] = cat[i]['تاریخ']
                 info['text'] = cat[i]['شرح_خبر']
                 info['marketing_text'] = cat[i]['متن_مارکتینگ']
                 info['helping_parameter'] = cat[i]['پارامتر_کمکی']
@@ -97,6 +98,7 @@ def news_card(request):
                 info={}
                 info['id'] = cat[i]['شناسه']
                 info['title'] = cat[i]['عنوان_خبر']
+                info['date'] = cat[i]['تاریخ']
                 info['text'] = cat[i]['شرح_خبر']
                 info['marketing_text'] = cat[i]['متن_مارکتینگ']
                 info['helping_parameter'] = cat[i]['پارامتر_کمکی']
@@ -135,6 +137,7 @@ def news_card(request):
             info={}
             info['id'] = cat[i]['شناسه']
             info['title'] = cat[i]['عنوان_خبر']
+            info['date'] = cat[i]['تاریخ']
             info['text'] = cat[i]['شرح_خبر']
             info['marketing_text'] = cat[i]['متن_مارکتینگ']
             info['helping_parameter'] = cat[i]['پارامتر_کمکی']
@@ -185,6 +188,7 @@ def news_content(request):
                 info={}
                 info['id'] = cat[i]['شناسه']
                 info['title'] = cat[i]['عنوان_خبر']
+                info['date'] = cat[i]['تاریخ']
                 info['text'] = cat[i]['شرح_خبر']
                 info['marketing_text'] = cat[i]['متن_مارکتینگ']
                 info['helping_parameter'] = cat[i]['پارامتر_کمکی']
@@ -243,6 +247,7 @@ def news_content(request):
                 info={}
                 info['id'] = cat[i]['شناسه']
                 info['title'] = cat[i]['عنوان_خبر']
+                info['date'] = cat[i]['تاریخ']
                 info['text'] = cat[i]['شرح_خبر']
                 info['marketing_text'] = cat[i]['متن_مارکتینگ']
                 info['helping_parameter'] = cat[i]['پارامتر_کمکی']
@@ -299,6 +304,7 @@ def news_content(request):
             info={}
             info['id'] = cat[i]['شناسه']
             info['title'] = cat[i]['عنوان_خبر']
+            info['date'] = cat[i]['تاریخ']
             info['text'] = cat[i]['شرح_خبر']
             info['marketing_text'] = cat[i]['متن_مارکتینگ']
             info['helping_parameter'] = cat[i]['پارامتر_کمکی']

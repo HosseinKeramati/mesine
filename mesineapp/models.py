@@ -2,6 +2,7 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from datetime import datetime
+from django.utils import timezone
 # from .user_typemodel.py import User_type
 
 class رسانه(models.Model):
@@ -69,7 +70,7 @@ class خبر(models.Model):
     شناسه = models.AutoField(primary_key=True)
     عنوان_خبر=models.CharField(max_length=500)
     شرح_خبر = RichTextUploadingField()
-    تاریخ = models.DateField(("Date"), default=datetime.now())
+    تاریخ = models.DateField(default=timezone.now)
     شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
     default=None ,max_length = 500 , related_name='nmedia' , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
     شناسه_عکس_مارکتینگ= models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
