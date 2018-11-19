@@ -74,7 +74,7 @@ class خبر(models.Model):
     عنوان_خبر=models.CharField(max_length=500)
     شرح_خبر = RichTextUploadingField()
     تاریخ = models.DateField(default=JalaliDate.today())
-    ساعت = models.TimeField(default=timezone.now())
+    ساعت = models.TimeField()
     شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
     default=None ,max_length = 500 , related_name='nmedia' , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
     شناسه_عکس_مارکتینگ= models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,

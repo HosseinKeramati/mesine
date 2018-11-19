@@ -26,7 +26,7 @@ SECRET_KEY = 'ts(&i-rv2))hcv*$vq_$he-6mcv588a1!)ako-#$=al4p_i1*e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ip='http://127.0.0.1'
+# ip='http://127.0.0.1:8000'
 # ALLOWED_HOSTS = ['127.0.0.1']
 
 #server
