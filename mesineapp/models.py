@@ -20,7 +20,7 @@ class رسانه(models.Model):
         verbose_name_plural = "رسانه"
 
     def __str__(self):
-        return str(self.شناسه)
+        return self.عنوان
 
 
 class ارزش_های_پیشنهادی(models.Model):
@@ -71,7 +71,7 @@ class نوع_شبکه_اجتماعی(models.Model):
 class خبر(models.Model):
 
     شناسه = models.AutoField(primary_key=True)
-    عنوان_خبر=models.CharField(max_length=500)
+    عنوان_خبر=models.CharField(max_length=90 , help_text = "تعداد کاراکتر های مجاز :‌ ۹۰ ")
     شرح_خبر = RichTextUploadingField()
     تاریخ = models.DateField(default=JalaliDate.today())
     ساعت = models.TimeField()
@@ -191,21 +191,40 @@ class سربرگ(models.Model):
 #     logo_id = models.ForeignKey(رسانه,on_delete=models.CASCADE , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
 #     deleted = models.IntegerField(default = 0)
 
+food_category=(
+    ('غذای اصلی' , 'غذای اصلی'),
+    ('پیش غذا' , 'پیش غذا'),
+    ('نوشیدنی' ,'نوشیدنی'),
+    ('سالاد و مخلفات' , 'سالاد و مخلفات'),
+    ('دسر' , 'دسر'),
+)
+
+class نوع_غذا(models.Model):
+
+    شناسه = models.AutoField(primary_key=True)
+    نوع = models.CharField(max_length=60 , choices = food_category , unique = True)
+
+    class Meta:
+        verbose_name_plural= 'دسته_بندی_غذا'
+
+    def __str__(self):
+        return self.نوع
+
 class منوی_غذا(models.Model):
 
     شناسه = models.AutoField(primary_key=True)
     عنوان = models.CharField(max_length=500)
     محتویات = models.CharField(max_length=500 , help_text = "محتویات غذا را به صورت مختصر بنویسید.")
-    متن = RichTextUploadingField()
-    شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
-    جایگزین = models.CharField(max_length = 500  , help_text ="یک جایگزین مناسب برای عکس وارد کنید تا در صورت نیاز بجای عکس نمایش داده شود.")
+    دسته_بندی_غذا =  models.ForeignKey(نوع_غذا, on_delete=models.CASCADE)
+    شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید." ,null=True, blank =True ,
+    default=None)
     حذف = models.IntegerField(default = 0 , help_text= "در این قسمت هر عددی که جایگزین 0 شود به معنی حذف شدن این نمونه از سایت است.")
 
     class Meta:
         verbose_name_plural = "منوی_غذا"
 
     def __str__(self):
-        return str(self.شناسه)
+        return self.عنوان
 
 
 class درباره_ما(models.Model):
