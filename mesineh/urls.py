@@ -13,7 +13,7 @@ from django.conf import settings
 urlpatterns = [
     # url(r'^back_end/admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-
+    # url(r'^filebrowser_filer/', include('ckeditor_filebrowser_filer.urls')),
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^back_end/admin/', admin.site.urls),
@@ -48,6 +48,6 @@ urlpatterns = [
     url(r'^back_end/starters',menu.starter,name='starter'),
     url(r'^back_end/drinks',menu.drinks,name='drinks'),
     url(r'^back_end/salads',menu.salads,name='salads'),
-    url(r'^back_end/dessert',menu.dessert,name='dessert'),
+    url(r'^back_end/desserts',menu.dessert,name='dessert'),
     # url(r'^back_end/parent',parent.parent,name='parent'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

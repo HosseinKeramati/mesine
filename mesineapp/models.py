@@ -214,7 +214,8 @@ class منوی_غذا(models.Model):
 
     شناسه = models.AutoField(primary_key=True)
     عنوان = models.CharField(max_length=500)
-    محتویات = models.CharField(max_length=500 , help_text = "محتویات غذا را به صورت مختصر بنویسید.")
+    محتویات = models.CharField(max_length=500 , help_text = "محتویات غذا را به صورت مختصر بنویسید." , null=True, blank =True ,
+    default=None)
     دسته_بندی_غذا =  models.ForeignKey(نوع_غذا, on_delete=models.CASCADE)
     شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید." ,null=True, blank =True ,
     default=None)

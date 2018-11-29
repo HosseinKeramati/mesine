@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['194.135.90.60']
 INSTALLED_APPS = [
     'jet.dashboard',
     'jet',
+    'ckeditor_uploader',
     'mesineapp',
     'django.contrib.contenttypes',
     'django.contrib.admin',
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    'ckeditor_uploader',
+
 
 ]
 MIDDLEWARE = [
@@ -233,6 +234,8 @@ CKEDITOR_CONFIGS = {
             ['TextColor', 'BGColor'],
             ['Source'],
         ],
+        'extraPlugins': 'easyimage',
+        'removePlugins': 'image',
     },
     'special': {
         'toolbar': 'Special',
