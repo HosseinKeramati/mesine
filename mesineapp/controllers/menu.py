@@ -266,7 +266,7 @@ def pictures(request):
                 else:
                     news_card_list.append({
                     'food_info' : info,
-                    'food_pic' :card_info
+                    'food_pic' :None
                     })
                     i=i+1
             result = {
@@ -306,7 +306,7 @@ def pictures(request):
                 else:
                     news_card_list.append({
                     'food_info' : info,
-                    'food_pic' :card_info
+                    'food_pic' :None
                     })
                     i=i+1
             result = {
@@ -341,7 +341,7 @@ def pictures(request):
             else:
                 news_card_list.append({
                 'food_info' : info,
-                'food_pic' :card_info
+                'food_pic' :None
                 })
                 i=i+1
     result = {
