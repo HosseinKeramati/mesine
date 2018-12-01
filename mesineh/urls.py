@@ -49,5 +49,6 @@ urlpatterns = [
     url(r'^back_end/drinks',menu.drinks,name='drinks'),
     url(r'^back_end/salads',menu.salads,name='salads'),
     url(r'^back_end/desserts',menu.dessert,name='dessert'),
+    url(r'^back_end/food-pics',menu.pictures,name='pictures'),
     # url(r'^back_end/parent',parent.parent,name='parent'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

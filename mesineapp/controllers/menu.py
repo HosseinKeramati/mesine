@@ -234,3 +234,121 @@ def dessert(request):
     "result": food_list
     }
     return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)
+
+def pictures(request):
+    if(request.body):
+        body = json.loads(request.body.decode('utf-8'))
+        id=body['id']
+        news_card_list=[]
+        if(خبر.objects.filter(شناسه = id)):
+            card = منوی_غذا.objects.filter(شناسه = id, حذف = 0).select_related('شناسه_عکس')
+            cat=list(card.values())
+            i=0
+            for objects in cat:
+                info={}
+                info['id'] = cat[i]['شناسه']
+                info['title'] = cat[i]['عنوان']
+                info['contents'] = cat[i]['محتویات']
+                media = {}
+                if objects['شناسه_عکس_id']:
+                    if (card[i].شناسه_عکس.حذف == 0 ):
+                        card_info={}
+                        card_info['id'] = card[i].شناسه_عکس.شناسه
+                        card_info['file'] = card[i].شناسه_عکس.فایل.name
+                        card_info['description'] = card[i].شناسه_عکس.توضیح
+                        card_info['title'] = card[i].شناسه_عکس.عنوان
+                        card_info['alt'] = card[i].شناسه_عکس.جایگزین
+                        news_card_list.append({
+                        'food_info' : info,
+                        'food_pic' :card_info
+                        })
+                        i=i+1
+                else:
+                    news_card_list.append({
+                    'food_info' : info,
+                    'food_pic' :card_info
+                    })
+                    i=i+1
+            result = {
+            "ok" : True,
+            "status_code": 200,
+            "result": news_card_list
+            }
+        elif(body['limit']!=0):
+            news_slider_list=[]
+            limit=body['limit']
+            offset=0
+            if(body['offset'] != 0 ):
+                offset = body['offset']
+            card = منوی_غذا.objects.filter( حذف = 0).select_related('شناسه_عکس')[offset:limit]
+            cat=list(card.values())
+
+            i=0
+            for objects in cat:
+                info={}
+                info['id'] = cat[i]['شناسه']
+                info['title'] = cat[i]['عنوان']
+                info['contents'] = cat[i]['محتویات']
+                media = {}
+                if objects['شناسه_عکس_id']:
+                    if (card[i].شناسه_عکس.حذف == 0 ):
+                        card_info={}
+                        card_info['id'] = card[i].شناسه_عکس.شناسه
+                        card_info['file'] = card[i].شناسه_عکس.فایل.name
+                        card_info['description'] = card[i].شناسه_عکس.توضیح
+                        card_info['title'] = card[i].شناسه_عکس.عنوان
+                        card_info['alt'] = card[i].شناسه_عکس.جایگزین
+                        news_card_list.append({
+                        'food_info' : info,
+                        'food_pic' :card_info
+                        })
+                        i=i+1
+                else:
+                    news_card_list.append({
+                    'food_info' : info,
+                    'food_pic' :card_info
+                    })
+                    i=i+1
+            result = {
+            "ok" : True,
+            "status_code": 200,
+            "result": news_card_list
+            }
+    else:
+        news_card_list=[]
+        card =منوی_غذا.objects.filter(حذف = 0).select_related('شناسه_عکس')
+        cat=list(card.values())
+        i=0
+        for objects in cat:
+            info={}
+            info['id'] = cat[i]['شناسه']
+            info['title'] = cat[i]['عنوان']
+            info['contents'] = cat[i]['محتویات']
+            media = {}
+            if objects['شناسه_عکس_id']:
+                if (card[i].شناسه_عکس.حذف == 0 ):
+                    card_info={}
+                    card_info['id'] = card[i].شناسه_عکس.شناسه
+                    card_info['file'] = card[i].شناسه_عکس.فایل.name
+                    card_info['description'] = card[i].شناسه_عکس.توضیح
+                    card_info['title'] = card[i].شناسه_عکس.عنوان
+                    card_info['alt'] = card[i].شناسه_عکس.جایگزین
+                    news_card_list.append({
+                    'food_info' : info,
+                    'food_pic' :card_info
+                    })
+                    i=i+1
+            else:
+                news_card_list.append({
+                'food_info' : info,
+                'food_pic' :card_info
+                })
+                i=i+1
+    result = {
+    "ok" : True,
+    "status_code": 200,
+    "result": news_card_list
+    }
+
+
+    return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)

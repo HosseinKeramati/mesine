@@ -275,183 +275,183 @@ def foods_content(request):
         return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)
 
 # def news_category(request):
-    if(request.body):
-        body = json.loads(request.body.decode('utf-8'))
-        if(body["id"] != 0):
-            id=body["id"]
-            news_category_list =[]
-            ncc=News_category.objects.filter(id = id)
-            m = Media.objects.filter(title__contains = 'news category')
-            Midia=list(m.values())
-            for items in list(ncc.values()):
-                ncc_ob={}
-                if(items['deleted'] == 0):
-                    ncc_ob['text']=items['text']
-                    ncc_ob['media_id'] = items['media_id_id']
-                    for objects in Midia:
-                        media = {}
-                        if (objects['id'] == items['media_id_id']):
-                            media['image'] = objects['file']
-                            media['caption']=objects['description']
-                            media['title'] = objects['title']
-                            media['alt'] = objects['alt']
-                            news_category_list.append({
-                            'media' : media,
-                            'info' : ncc_ob,
-                            })
-
-            result = {
-            "ok" : True,
-            "status_code": 200,
-            "result": news_category_list
-            }
-        elif(body["limit"] != 0):
-            limit=body["limit"]
-            offset=0
-            if(body["offset"] != 0):
-                offset=body["offset"]
-            news_category_list =[]
-            ncc=News_category.objects.all()[offset:limit]
-            m = Media.objects.filter(title__contains = 'news category')
-            Midia=list(m.values())
-            for items in list(ncc.values()):
-                ncc_ob={}
-                if(items['deleted'] == 0):
-                    ncc_ob['text']=items['text']
-                    ncc_ob['media_id'] = items['media_id_id']
-                    for objects in Midia:
-                        media = {}
-                        if (objects['id'] == items['media_id_id']):
-                            media['image'] = objects['file']
-                            media['caption']=objects['description']
-                            media['title'] = objects['title']
-                            media['alt'] = objects['alt']
-                            news_category_list.append({
-                            'media' : media,
-                            'info' : ncc_ob,
-                            })
-
-            result = {
-            "ok" : True,
-            "status_code": 200,
-            "result": news_category_list
-            }
-    else:
-        news_category_list =[]
-        ncc=News_category.objects.all()
-        m = Media.objects.filter(title__contains = 'news category')
-        Midia=list(m.values())
-        for items in list(ncc.values()):
-            ncc_ob={}
-            if(items['deleted'] == 0):
-                ncc_ob['text']=items['text']
-                ncc_ob['media_id'] = items['media_id_id']
-                for objects in Midia:
-                    media = {}
-                    if (objects['id'] == items['media_id_id']):
-                        media['image'] = objects['file']
-                        media['caption']=objects['description']
-                        media['title'] = objects['title']
-                        media['alt'] = objects['alt']
-                        news_category_list.append({
-                        'media' : media,
-                        'info' : ncc_ob,
-                        })
-
-        result = {
-        "ok" : True,
-        "status_code": 200,
-        "result": news_category_list
-        }
-
-    return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)
-
-# def news_category_news(request):
-    if(request.body):
-        body = json.loads(request.body.decode('utf-8'))
-        if(body["id"] != 0):
-            id=body["id"]
-            news_category_news_list =[]
-            nccn=News_category_new.objects.filter(id = id)
-            for items in list(nccn.values()):
-                nccn_ob={}
-                if(items['deleted'] == 0):
-                    news=New.objects.filter(id = items['news_id_id'])
-                    news_cat=News_category.objects.filter(id = items['news_category_id_id'])
-                    n=list(news.values())
-                    ncat=list(news_cat.values())
-
-                    nccn_ob['news_id']=items['news_id_id']
-                    nccn_ob['news_title']=n[0]['title']
-                    nccn_ob['news_text']=n[0]['text']
-                    nccn_ob['news_media_id']=n[0]["media_id_id"]
-                    nccn_ob['news_category'] = n[0]['news_category_id']
-                    nccn_ob['news_category_id'] = items['news_category_id_id']
-                    nccn_ob['news_category_text']=n[0]['text']
-                    nccn_ob['news_category_media_id']=n[0]["media_id_id"]
-
-                    news_category_news_list.append(nccn_ob)
-
-            result = {
-            "ok" : True,
-            "status_code": 200,
-            "result": news_category_news_list
-            }
-        elif(body["limit"] != 0):
-            offset=0
-            limit=body["limit"]
-            if(body["offset"] != 0):
-                offset=body["offset"]
-            news_category_news_list =[]
-            nccn=News_category_new.objects.all()[offset:limit]
-            for items in list(nccn.values()):
-                nccn_ob={}
-                if(items['deleted'] == 0):
-                    news=New.objects.filter(id = items['news_id_id'])
-                    news_cat=News_category.objects.filter(id = items['news_category_id_id'])
-                    n=list(news.values())
-                    ncat=list(news_cat.values())
-
-                    nccn_ob['news_id']=items['news_id_id']
-                    nccn_ob['news_title']=n[0]['title']
-                    nccn_ob['news_text']=n[0]['text']
-                    nccn_ob['news_media_id']=n[0]["media_id_id"]
-                    nccn_ob['news_category'] = n[0]['news_category_id']
-                    nccn_ob['news_category_id'] = items['news_category_id_id']
-                    nccn_ob['news_category_text']=n[0]['text']
-                    nccn_ob['news_category_media_id']=n[0]["media_id_id"]
-                    news_category_news_list.append(nccn_ob)
-
-            result = {
-            "ok" : True,
-            "status_code": 200,
-            "result": news_category_news_list
-            }
-    else:
-        news_category_news_list =[]
-        nccn=News_category_new.objects.all()
-        for items in list(nccn.values()):
-            nccn_ob={}
-            if(items['deleted'] == 0):
-                news=New.objects.filter(id = items['news_id_id'])
-                news_cat=News_category.objects.filter(id = items['news_category_id_id'])
-                n=list(news.values())
-                ncat=list(news_cat.values())
-
-                nccn_ob['news_id']=items['news_id_id']
-                nccn_ob['news_title']=n[0]['title']
-                nccn_ob['news_text']=n[0]['text']
-                nccn_ob['news_media_id']=n[0]["media_id_id"]
-                nccn_ob['news_category'] = n[0]['news_category_id']
-                nccn_ob['news_category_id'] = items['news_category_id_id']
-                nccn_ob['news_category_text']=n[0]['text']
-                nccn_ob['news_category_media_id']=n[0]["media_id_id"]
-
-                news_category_news_list.append(nccn_ob)
-
-        result = {
-        "ok" : True,
-        "status_code": 200,
-        "result": news_category_news_list
-        }
-    return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)
+#     if(request.body):
+#         body = json.loads(request.body.decode('utf-8'))
+#         if(body["id"] != 0):
+#             id=body["id"]
+#             news_category_list =[]
+#             ncc=News_category.objects.filter(id = id)
+#             m = Media.objects.filter(title__contains = 'news category')
+#             Midia=list(m.values())
+#             for items in list(ncc.values()):
+#                 ncc_ob={}
+#                 if(items['deleted'] == 0):
+#                     ncc_ob['text']=items['text']
+#                     ncc_ob['media_id'] = items['media_id_id']
+#                     for objects in Midia:
+#                         media = {}
+#                         if (objects['id'] == items['media_id_id']):
+#                             media['image'] = objects['file']
+#                             media['caption']=objects['description']
+#                             media['title'] = objects['title']
+#                             media['alt'] = objects['alt']
+#                             news_category_list.append({
+#                             'media' : media,
+#                             'info' : ncc_ob,
+#                             })
+#
+#             result = {
+#             "ok" : True,
+#             "status_code": 200,
+#             "result": news_category_list
+#             }
+#         elif(body["limit"] != 0):
+#             limit=body["limit"]
+#             offset=0
+#             if(body["offset"] != 0):
+#                 offset=body["offset"]
+#             news_category_list =[]
+#             ncc=News_category.objects.all()[offset:limit]
+#             m = Media.objects.filter(title__contains = 'news category')
+#             Midia=list(m.values())
+#             for items in list(ncc.values()):
+#                 ncc_ob={}
+#                 if(items['deleted'] == 0):
+#                     ncc_ob['text']=items['text']
+#                     ncc_ob['media_id'] = items['media_id_id']
+#                     for objects in Midia:
+#                         media = {}
+#                         if (objects['id'] == items['media_id_id']):
+#                             media['image'] = objects['file']
+#                             media['caption']=objects['description']
+#                             media['title'] = objects['title']
+#                             media['alt'] = objects['alt']
+#                             news_category_list.append({
+#                             'media' : media,
+#                             'info' : ncc_ob,
+#                             })
+#
+#             result = {
+#             "ok" : True,
+#             "status_code": 200,
+#             "result": news_category_list
+#             }
+#     else:
+#         news_category_list =[]
+#         ncc=News_category.objects.all()
+#         m = Media.objects.filter(title__contains = 'news category')
+#         Midia=list(m.values())
+#         for items in list(ncc.values()):
+#             ncc_ob={}
+#             if(items['deleted'] == 0):
+#                 ncc_ob['text']=items['text']
+#                 ncc_ob['media_id'] = items['media_id_id']
+#                 for objects in Midia:
+#                     media = {}
+#                     if (objects['id'] == items['media_id_id']):
+#                         media['image'] = objects['file']
+#                         media['caption']=objects['description']
+#                         media['title'] = objects['title']
+#                         media['alt'] = objects['alt']
+#                         news_category_list.append({
+#                         'media' : media,
+#                         'info' : ncc_ob,
+#                         })
+#
+#         result = {
+#         "ok" : True,
+#         "status_code": 200,
+#         "result": news_category_list
+#         }
+#
+#     return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)
+#
+#س def news_category_news(request):
+#     if(request.body):
+#         body = json.loads(request.body.decode('utf-8'))
+#         if(body["id"] != 0):
+#             id=body["id"]
+#             news_category_news_list =[]
+#             nccn=News_category_new.objects.filter(id = id)
+#             for items in list(nccn.values()):
+#                 nccn_ob={}
+#                 if(items['deleted'] == 0):
+#                     news=New.objects.filter(id = items['news_id_id'])
+#                     news_cat=News_category.objects.filter(id = items['news_category_id_id'])
+#                     n=list(news.values())
+#                     ncat=list(news_cat.values())
+#
+#                     nccn_ob['news_id']=items['news_id_id']
+#                     nccn_ob['news_title']=n[0]['title']
+#                     nccn_ob['news_text']=n[0]['text']
+#                     nccn_ob['news_media_id']=n[0]["media_id_id"]
+#                     nccn_ob['news_category'] = n[0]['news_category_id']
+#                     nccn_ob['news_category_id'] = items['news_category_id_id']
+#                     nccn_ob['news_category_text']=n[0]['text']
+#                     nccn_ob['news_category_media_id']=n[0]["media_id_id"]
+#
+#                     news_category_news_list.append(nccn_ob)
+#
+#             result = {
+#             "ok" : True,
+#             "status_code": 200,
+#             "result": news_category_news_list
+#             }
+#         elif(body["limit"] != 0):
+#             offset=0
+#             limit=body["limit"]
+#             if(body["offset"] != 0):
+#                 offset=body["offset"]
+#             news_category_news_list =[]
+#             nccn=News_category_new.objects.all()[offset:limit]
+#             for items in list(nccn.values()):
+#                 nccn_ob={}
+#                 if(items['deleted'] == 0):
+#                     news=New.objects.filter(id = items['news_id_id'])
+#                     news_cat=News_category.objects.filter(id = items['news_category_id_id'])
+#                     n=list(news.values())
+#                     ncat=list(news_cat.values())
+#
+#                     nccn_ob['news_id']=items['news_id_id']
+#                     nccn_ob['news_title']=n[0]['title']
+#                     nccn_ob['news_text']=n[0]['text']
+#                     nccn_ob['news_media_id']=n[0]["media_id_id"]
+#                     nccn_ob['news_category'] = n[0]['news_category_id']
+#                     nccn_ob['news_category_id'] = items['news_category_id_id']
+#                     nccn_ob['news_category_text']=n[0]['text']
+#                     nccn_ob['news_category_media_id']=n[0]["media_id_id"]
+#                     news_category_news_list.append(nccn_ob)
+#
+#             result = {
+#             "ok" : True,
+#             "status_code": 200,
+#             "result": news_category_news_list
+#             }
+#     else:
+#         news_category_news_list =[]
+#         nccn=News_category_new.objects.all()
+#         for items in list(nccn.values()):
+#             nccn_ob={}
+#             if(items['deleted'] == 0):
+#                 news=New.objects.filter(id = items['news_id_id'])
+#                 news_cat=News_category.objects.filter(id = items['news_category_id_id'])
+#                 n=list(news.values())
+#                 ncat=list(news_cat.values())
+#
+#                 nccn_ob['news_id']=items['news_id_id']
+#                 nccn_ob['news_title']=n[0]['title']
+#                 nccn_ob['news_text']=n[0]['text']
+#                 nccn_ob['news_media_id']=n[0]["media_id_id"]
+#                 nccn_ob['news_category'] = n[0]['news_category_id']
+#                 nccn_ob['news_category_id'] = items['news_category_id_id']
+#                 nccn_ob['news_category_text']=n[0]['text']
+#                 nccn_ob['news_category_media_id']=n[0]["media_id_id"]
+#
+#                 news_category_news_list.append(nccn_ob)
+#
+#         result = {
+#         "ok" : True,
+#         "status_code": 200,
+#         "result": news_category_news_list
+#         }
+#     return JsonResponse(result,json_dumps_params={'indent': 2},safe=False)
