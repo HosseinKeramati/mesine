@@ -234,8 +234,8 @@ CKEDITOR_CONFIGS = {
             ['TextColor', 'BGColor'],
             ['Source'],
         ],
-        'extraPlugins': 'easyimage',
-        'removePlugins': 'image',
+        # 'extraPlugins': 'easyimage',
+        # 'removePlugins': 'image',
     },
     'special': {
         'toolbar': 'Special',
