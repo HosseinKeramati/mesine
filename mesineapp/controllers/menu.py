@@ -264,10 +264,6 @@ def pictures(request):
                         })
                         i=i+1
                 else:
-                    news_card_list.append({
-                    'food_info' : info,
-                    'food_pic' :None
-                    })
                     i=i+1
             result = {
             "ok" : True,
@@ -304,10 +300,6 @@ def pictures(request):
                         })
                         i=i+1
                 else:
-                    news_card_list.append({
-                    'food_info' : info,
-                    'food_pic' :None
-                    })
                     i=i+1
             result = {
             "ok" : True,
@@ -339,10 +331,6 @@ def pictures(request):
                     })
                     i=i+1
             else:
-                news_card_list.append({
-                'food_info' : info,
-                'food_pic' :None
-                })
                 i=i+1
     result = {
     "ok" : True,
