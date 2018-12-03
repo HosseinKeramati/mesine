@@ -64,8 +64,9 @@ class خبر(models.Model):
     # b=a.replace('-' , ',')
     locale.setlocale(locale.LC_ALL, "fa_IR")
     c=str(jdatetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S"))
+    d=str(JalaliDatetime.now())
     تاریخ = models.CharField(default = c[0:20] , max_length=25)
-    ساعت = models.TimeField(default=c[20:25])
+    ساعت = models.TimeField(default=d[11:16])
     شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
     default=None ,max_length = 500 , related_name='nmedia' , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
     شناسه_عکس_مارکتینگ= models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
