@@ -6,6 +6,7 @@ from django.utils import timezone
 import pytz
 from khayyam import *
 import jdatetime
+import locale
 # from .user_typemodel.py import User_type
 
 class رسانه(models.Model):
@@ -36,21 +37,6 @@ class ارزش_های_پیشنهادی(models.Model):
     def __str__(self):
             return self.ارزش_پیشنهادی
 
-class منوی_محبوب_رستوران(models.Model):
-
-    شناسه = models.AutoField(primary_key=True)
-    عنوان_غذا = models.CharField(max_length=500)
-    توضیح = models.CharField(max_length=500)
-    شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
-    جایگزین = models.CharField(max_length = 500  , help_text ="یک جایگزین مناسب برای عکس وارد کنید تا در صورت نیاز بجای عکس نمایش داده شود.")
-    حذف = models.IntegerField(default = 0 , help_text= "در این قسمت هر عددی که جایگزین 0 شود به معنی حذف شدن این نمونه از سایت است.")
-
-    class Meta:
-        verbose_name_plural = "منوی_محبوب_رستوران"
-
-    def __str__(self):
-            return self.عنوان_غذا
-
 social_networks=(
 ('Instagram','Instagram'),
 ('Telegram','Telegram')
@@ -73,8 +59,13 @@ class خبر(models.Model):
     شناسه = models.AutoField(primary_key=True)
     عنوان_خبر=models.CharField(max_length=90 , help_text = "تعداد کاراکتر های مجاز :‌ ۹۰ ")
     شرح_خبر = RichTextUploadingField()
-    تاریخ = models.DateField(default=JalaliDate.today())
-    ساعت = models.TimeField()
+    # تاریخ_میلادی = models.DateField(default=jdatetime.date.today())
+    # a=str(timezone.now())[0:10]
+    # b=a.replace('-' , ',')
+    locale.setlocale(locale.LC_ALL, "fa_IR")
+    c=str(jdatetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S"))
+    تاریخ = models.CharField(default = c[0:20] , max_length=25)
+    ساعت = models.TimeField(default=c[20:25])
     شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
     default=None ,max_length = 500 , related_name='nmedia' , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
     شناسه_عکس_مارکتینگ= models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
@@ -89,7 +80,7 @@ class خبر(models.Model):
 
 
     def __str__(self):
-        return str(self.شناسه)
+        return self.عنوان_خبر
 
 banner_type=(
     ('صفحه اصلی','صفحه اصلی'),
@@ -125,7 +116,7 @@ class بنر(models.Model):
         verbose_name_plural= 'بنر_ها'
 
     def __str__(self):
-        return str(self.شناسه)
+        return self.عنوان
 
 
 class سرویس(models.Model):
@@ -143,7 +134,7 @@ class سرویس(models.Model):
     class Meta:
         verbose_name_plural = "سرویس_ها"
     def __str__(self):
-        return str(self.شناسه)
+        return self.عنوان
 
 class لوگو(models.Model):
 
@@ -156,7 +147,7 @@ class لوگو(models.Model):
     class Meta:
         verbose_name_plural = "لوگو"
     def __str__(self):
-        return str(self.شناسه)
+        return self.متن
 
 
 class پانویس(models.Model):
@@ -169,7 +160,7 @@ class پانویس(models.Model):
         verbose_name_plural = "پانویس"
 
     def __str__(self):
-        return str(self.شناسه)
+        return self.متن
 
 
 class سربرگ(models.Model):
@@ -182,7 +173,7 @@ class سربرگ(models.Model):
         verbose_name_plural = "سربرگ"
 
     def __str__(self):
-        return str(self.شناسه)
+        return self.متن
 
 # class Costumer(models.Model):
 #
@@ -227,6 +218,19 @@ class منوی_غذا(models.Model):
     def __str__(self):
         return self.عنوان
 
+class منوی_محبوب_رستوران(models.Model):
+
+    شناسه = models.AutoField(primary_key=True)
+    عنوان_غذا = models.ForeignKey(منوی_غذا, on_delete=models.CASCADE , help_text="از لیست منوی غذا عنوانی را برای نمایش در منوی محبوب رستوران انتخاب کنید.")
+    # توضیح = models.CharField(max_length=500)
+    # جایگزین = models.CharField(max_length = 500  , help_text ="یک جایگزین مناسب برای عکس وارد کنید تا در صورت نیاز بجای عکس نمایش داده شود.")
+    حذف = models.IntegerField(default = 0 , help_text= "در این قسمت هر عددی که جایگزین 0 شود به معنی حذف شدن این نمونه از سایت است.")
+
+    class Meta:
+        verbose_name_plural = "منوی_محبوب_رستوران"
+
+    def __str__(self):
+            return self.عنوان_غذا
 
 class درباره_ما(models.Model):
     شناسه = models.AutoField(primary_key=True)

@@ -107,13 +107,11 @@ JET_SIDE_MENU_ITEMS = [ # A list of application or custom item dicts
         {'label': ('تماس با ما'), 'url':  ip + '/back_end/admin/mesineapp/%D8%AA%D9%85%D8%A7%D8%B3_%D8%A8%D8%A7_%D9%85%D8%A7/' },
         {'label': ('خبر ها'), 'url':  ip + '/back_end/admin/mesineapp/%D8%AE%D8%A8%D8%B1/' },
         {'label': ('درباره ما'), 'url':  ip + '/back_end/admin/mesineapp/%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87_%D9%85%D8%A7/' },
-        {'label': ('سربرگ'), 'url':  ip + '/back_end/admin/mesineapp/%D8%B3%D8%B1%D8%A8%D8%B1%DA%AF/' },
         {'label': ('سرویس ها'), 'url':  ip + '/back_end/admin/mesineapp/%D8%B3%D8%B1%D9%88%DB%8C%D8%B3/' },
         {'label': ('شبکه اجتماعی'), 'url':  ip + '/back_end/admin/mesineapp/%D8%B4%D8%A8%DA%A9%D9%87_%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%DB%8C/' },
         {'label': ('لوگو'), 'url':  ip + '/back_end/admin/mesineapp/%D9%84%D9%88%DA%AF%D9%88/' },
         {'label': ('منوی غذا'), 'url':  ip + '/back_end/admin/mesineapp/%D9%85%D9%86%D9%88%DB%8C_%D8%BA%D8%B0%D8%A7/' },
         {'label': ('منوی محبوب رستوران'), 'url':  ip + '/back_end/admin/mesineapp/%D9%85%D9%86%D9%88%DB%8C_%D9%85%D8%AD%D8%A8%D9%88%D8%A8_%D8%B1%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D9%86/' },
-        {'label': ('پانویس'), 'url':  ip + '/back_end/admin/mesineapp/%D9%BE%D8%A7%D9%86%D9%88%DB%8C%D8%B3/' },
 
     ]},
     {'label': ('مدیریت'), 'items': [
@@ -258,7 +256,7 @@ EMAIL_HOST_PASSWORD = "Messi..Neh20"
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'fa-ir'
+LANGUAGE_CODE = 'fa_ir'
 
 TIME_ZONE = 'Asia/Tehran'
 
