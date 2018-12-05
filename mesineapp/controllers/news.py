@@ -54,7 +54,7 @@ def news_card(request):
                 info={}
                 info['id'] = cat[i]['شناسه']
                 info['title'] = cat[i]['عنوان_خبر']
-                info['date'] = cat[i]['تاریخ']
+                info['date'] = str(cat[i]['تاریخ'])
                 info['time'] = cat[i]['ساعت']
                 info['text'] = cat[i]['شرح_خبر']
                 info['marketing_text'] = cat[i]['متن_مارکتینگ']
@@ -99,7 +99,7 @@ def news_card(request):
                 info={}
                 info['id'] = cat[i]['شناسه']
                 info['title'] = cat[i]['عنوان_خبر']
-                info['date'] = cat[i]['تاریخ']
+                info['date'] = str(cat[i]['تاریخ'])
                 info['time'] = cat[i]['ساعت']
                 info['text'] = cat[i]['شرح_خبر']
                 info['marketing_text'] = cat[i]['متن_مارکتینگ']
@@ -139,7 +139,7 @@ def news_card(request):
             info={}
             info['id'] = cat[i]['شناسه']
             info['title'] = cat[i]['عنوان_خبر']
-            info['date'] = cat[i]['تاریخ']
+            info['date'] = str(cat[i]['تاریخ'])
             info['time'] = cat[i]['ساعت']
             info['text'] = cat[i]['شرح_خبر']
             info['marketing_text'] = cat[i]['متن_مارکتینگ']
@@ -191,7 +191,7 @@ def news_content(request):
                 info={}
                 info['id'] = cat[i]['شناسه']
                 info['title'] = cat[i]['عنوان_خبر']
-                info['date'] = cat[i]['تاریخ']
+                info['date'] = str(cat[i]['تاریخ'])
                 info['time'] = cat[i]['ساعت']
                 info['text'] = cat[i]['شرح_خبر']
                 info['marketing_text'] = cat[i]['متن_مارکتینگ']
@@ -251,7 +251,7 @@ def news_content(request):
                 info={}
                 info['id'] = cat[i]['شناسه']
                 info['title'] = cat[i]['عنوان_خبر']
-                info['date'] = cat[i]['تاریخ']
+                info['date'] = str(cat[i]['تاریخ'])
                 info['time'] = cat[i]['ساعت']
                 info['text'] = cat[i]['شرح_خبر']
                 info['marketing_text'] = cat[i]['متن_مارکتینگ']
@@ -309,7 +309,7 @@ def news_content(request):
             info={}
             info['id'] = cat[i]['شناسه']
             info['title'] = cat[i]['عنوان_خبر']
-            info['date'] = cat[i]['تاریخ']
+            info['date'] = str(cat[i]['تاریخ'])
             info['time'] = cat[i]['ساعت']
             info['text'] = cat[i]['شرح_خبر']
             info['marketing_text'] = cat[i]['متن_مارکتینگ']
