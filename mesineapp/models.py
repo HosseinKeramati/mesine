@@ -70,7 +70,8 @@ class خبر(models.Model):
     locale.setlocale(locale.LC_ALL, "fa_IR")
     c=str(jdatetime.date.today().strftime("%a, %d %b %Y"))
     d=str(timezone.now())
-    تاریخ = models.CharField(default = c[0:30] , max_length=25)
+    تاریخ = models.DateField(default=timezone.now() ,editable=False)
+    تاریخ_شمسی = models.CharField(default = c[0:30] , max_length=25)
     ساعت = models.TimeField(help_text = "بر روی آیکون ساعت کلیک کرده و ساعت مورد نظر خود را انتخاب کنید. Now زمان فعلی را به شما خواهد داد.")
     شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
     default=None ,max_length = 500 , related_name='nmedia' , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")

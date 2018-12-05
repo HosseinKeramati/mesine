@@ -37,8 +37,8 @@ class Val(admin.ModelAdmin):
     prepopulated_fields = {}     #dictionary needed for seo
 
 class Ne(admin.ModelAdmin):
-    list_display = ('شناسه','عنوان_خبر' , 'تاریخ' ,'ساعت' ,'حذف',)
-    list_filter = ('عنوان_خبر' , 'تاریخ' ,)
+    list_display = ('شناسه','عنوان_خبر' , 'تاریخ_شمسی' ,'ساعت' ,'حذف',)
+    list_filter = ('عنوان_خبر' , 'تاریخ_شمسی' ,)
     search_fields = ('عنوان_خبر',)
     prepopulated_fields = {}     #dictionary needed for seo
 
