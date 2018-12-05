@@ -7,6 +7,10 @@ import pytz
 from khayyam import *
 import jdatetime
 import locale
+# from django.utils.timezone import activate
+# activate(settings.TIME_ZONE)
+# settingstime_zone = timezone(settings.TIME_ZONE)
+# last_updated = last_updated.astimezone(settings_time_zone)
 # from .user_typemodel.py import User_type
 
 class رسانه(models.Model):
@@ -62,11 +66,12 @@ class خبر(models.Model):
     # تاریخ_میلادی = models.DateField(default=jdatetime.date.today())
     # a=str(timezone.now())[0:10]
     # b=a.replace('-' , ',')
+    # timestamp = models.DateTimeField(default=timezone.now, db_index=True)
     locale.setlocale(locale.LC_ALL, "fa_IR")
-    c=str(jdatetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S"))
-    d=str(JalaliDatetime.now())
-    تاریخ = models.CharField(default = c[0:20] , max_length=25)
-    ساعت = models.TimeField(default=d[11:16])
+    c=str(jdatetime.date.today().strftime("%a, %d %b %Y"))
+    d=str(timezone.now())
+    تاریخ = models.CharField(default = c[0:30] , max_length=25)
+    ساعت = models.TimeField(help_text = "بر روی آیکون ساعت کلیک کرده و ساعت مورد نظر خود را انتخاب کنید. Now زمان فعلی را به شما خواهد داد.")
     شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
     default=None ,max_length = 500 , related_name='nmedia' , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
     شناسه_عکس_مارکتینگ= models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
