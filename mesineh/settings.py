@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import locale
+locale.setlocale(locale.LC_ALL, "fa_IR")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +39,7 @@ ALLOWED_HOSTS = ['194.135.90.60']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_jalali',
     'jet.dashboard',
     'jet',
     'ckeditor_uploader',
@@ -241,6 +244,32 @@ CKEDITOR_CONFIGS = {
             ['Bold'],
         ],
     }
+}
+
+
+
+JALALI_DATE_DEFAULTS = {
+   'Strftime': {
+        'date': '%y/%m/%d',
+        'datetime': '%H:%M:%S _ %y/%m/%d',
+    },
+    'Static': {
+        'js': [ # prefix address is 'admin/'
+            'js/django_jalali.min.js',
+            # or
+            # 'jquery.ui.datepicker.jalali/scripts/jquery-1.10.2.min.js',
+            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
+            # 'jquery.ui.datepicker.jalali/scripts/calendar.js',
+            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
+            # 'jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
+            # 'js/main.js',
+        ],
+        'css': {
+            'all': [
+                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+            ]
+        }
+    },
 }
 
 

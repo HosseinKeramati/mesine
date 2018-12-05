@@ -1,12 +1,13 @@
 
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from django_jalali.db import models as jmodels
 from datetime import datetime
 from django.utils import timezone
 import pytz
 from khayyam import *
 import jdatetime
-import locale
+
 # from django.utils.timezone import activate
 # activate(settings.TIME_ZONE)
 # settingstime_zone = timezone(settings.TIME_ZONE)
@@ -57,6 +58,17 @@ class نوع_شبکه_اجتماعی(models.Model):
     def __str__(self):
         return self.متن
 
+# YEAR_CHOICES = range(1377, 1300, -1)
+# MONTH_CHOICES = {1: 'فروردین',2: 'اردیبهشت',3: 'خرداد',4: 'تیر',5: 'مرداد',6: 'شهریور',7: 'مهر',8: 'آبان',9: 'آذر',10: 'دی',11: 'بهمن',12: 'اسفند'}
+
+# class ProfileUpdate(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = '__all__'
+#
+#     def __init__(self, *args, **kwargs):
+#         super(ProfileUpdate, self).__init__(*args, **kwargs)
+#         self.fields['birthday'] = forms.DateField(required=False, widget=extras.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES))
 
 class خبر(models.Model):
 
@@ -67,11 +79,10 @@ class خبر(models.Model):
     # a=str(timezone.now())[0:10]
     # b=a.replace('-' , ',')
     # timestamp = models.DateTimeField(default=timezone.now, db_index=True)
-    locale.setlocale(locale.LC_ALL, "fa_IR")
     c=str(jdatetime.date.today().strftime("%a, %d %b %Y"))
     d=str(timezone.now())
-    تاریخ = models.DateField(default=timezone.now() ,editable=False)
-    تاریخ_شمسی = models.CharField(default = c[0:30] , max_length=25)
+    تاریخ = jmodels.jDateField()
+    # تاریخ_شمسی = jmodels.jDateField()
     ساعت = models.TimeField(help_text = "بر روی آیکون ساعت کلیک کرده و ساعت مورد نظر خود را انتخاب کنید. Now زمان فعلی را به شما خواهد داد.")
     شناسه_عکس = models.ForeignKey(رسانه,on_delete=models.CASCADE, null=True, blank =True ,
     default=None ,max_length = 500 , related_name='nmedia' , help_text = "شناسه رسانه مورد نظر را انتخاب کرده یا رسانه ای جدید ایجاد کنید.")
