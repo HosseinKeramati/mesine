@@ -16,7 +16,7 @@ class Pro(admin.ModelAdmin):
     list_filter = ('عنوان',)
     search_fields = ('عنوان',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 
 class Pp(admin.ModelAdmin):
@@ -24,7 +24,7 @@ class Pp(admin.ModelAdmin):
     list_filter = ('نوع',)
     search_fields = ('نوع',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 
 class Pq(admin.ModelAdmin):
@@ -32,35 +32,35 @@ class Pq(admin.ModelAdmin):
     list_filter = ('متن',)
     search_fields = ('متن',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 class Val(admin.ModelAdmin):
     list_display = ('شناسه','ارزش_پیشنهادی' ,'حذف',)
     list_filter = ('ارزش_پیشنهادی',)
     search_fields = ('ارزش_پیشنهادی',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 class Ne(admin.ModelAdmin):
     list_display = ('شناسه','عنوان_خبر' , 'تاریخ' ,'ساعت' ,'حذف',)
     list_filter = ('عنوان_خبر' , 'تاریخ' ,)
     search_fields = ('عنوان_خبر',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 class Ban(admin.ModelAdmin):
     list_display = ('شناسه' , 'عنوان' , 'حذف' ,)
     list_filter = ('عنوان',)
     search_fields = ('عنوان',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 class Lo(admin.ModelAdmin):
     list_display = ('شناسه' , 'متن' , 'حذف',)
     list_filter = ('متن' ,)
     search_fields = ('متن',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 
 class Ty(admin.ModelAdmin):
@@ -68,36 +68,36 @@ class Ty(admin.ModelAdmin):
     list_filter = ('نوع' ,)
     search_fields = ('نوع',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 class Fo(admin.ModelAdmin):
     list_display = ('شناسه' , 'عنوان' , 'دسته_بندی_غذا', 'حذف' ,)
     list_filter = ('دسته_بندی_غذا', 'عنوان' ,)
     search_fields = ('عنوان', 'دسته_بندی_غذا' ,)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 class Ab(admin.ModelAdmin):
     list_display = ('شناسه' , 'حذف',)
     list_filter = ('حذف' ,)
     search_fields = ('حذف',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 class Me(admin.ModelAdmin):
     list_display = ('شناسه' , 'عنوان_غذا', 'حذف' ,)
     list_filter = ('عنوان_غذا',)
     search_fields = ('عنوان_غذا',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
+    list_per_page = 10
 
 class So(admin.ModelAdmin):
     list_display = ('شناسه' , 'نام_کاربری', 'نوع_شبکه_اجتماعی','حذف',)
     list_filter = ('نام_کاربری' ,)
     search_fields = ('نام_کاربری',)
     prepopulated_fields = {}     #dictionary needed for seo
-    list_per_page = 12
-    
+    list_per_page = 10
+
 admin.site.site_header = "مدیریت رستوران مسینه"
 admin.site.site_title = "پورتال مدیریت رستوران مسینه"
 admin.site.index_title = "به پورتال مدیریت رستوران مسینه خوش آمدید."
