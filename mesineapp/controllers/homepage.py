@@ -56,9 +56,10 @@ def favorite(request):
         banners['id'] = items['شناسه']
         media = {}
         if (favorite[i].عنوان_غذا.حذف == 0):
-            print(ban)
-            x = رسانه.objects.filter(حذف = 0 , شناسه =ban[i]['شناسه'])
-            print(x.values())
+            # print("ban" ,ban[i]["عنوان_غذا_id"])
+            y = ban[i]["عنوان_غذا_id"]
+            x = رسانه.objects.filter(حذف = 0 , شناسه =y)
+            # print(x.values())
             media['image'] = x[0].فایل.name
             media['caption']=x[0].توضیح
             media['title'] = favorite[i].عنوان_غذا.عنوان
