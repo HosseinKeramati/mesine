@@ -47,22 +47,22 @@ def services(request):
 
 def favorite(request):
 
-    favorite = منوی_محبوب_رستوران.objects.filter(حذف = 0).select_related('شناسه_عکس')
+    favorite = منوی_محبوب_رستوران.objects.filter(حذف = 0).select_related('عنوان_غذا')
     banner_list=[]
     ban =list(favorite.values())
     i=0
     for items in ban:
         banners={}
         banners['id'] = items['شناسه']
-        banners['title']=items['عنوان_غذا']
-        banners['description'] = items['توضیح']
-        banners['alt'] = items['جایگزین']
         media = {}
-        if (favorite[i].شناسه_عکس.حذف == 0):
-            media['image'] = favorite[i].شناسه_عکس.فایل.name
-            media['caption']=favorite[i].شناسه_عکس.توضیح
-            media['title'] = favorite[i].شناسه_عکس.عنوان
-            media['alt'] = favorite[i].شناسه_عکس.جایگزین
+        if (favorite[i].عنوان_غذا.حذف == 0):
+            print(ban)
+            x = رسانه.objects.filter(حذف = 0 , شناسه =ban[0]['شناسه'])
+            print(x.values())
+            media['image'] = x[i].فایل.name
+            media['caption']=x[i].توضیح
+            media['title'] = favorite[i].عنوان_غذا.عنوان
+            media['alt'] = x[i].جایگزین
             banner_list.append({
             'media' : media,
             'banner_info' : banners

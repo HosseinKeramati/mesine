@@ -248,7 +248,7 @@ class منوی_محبوب_رستوران(models.Model):
         verbose_name_plural = "منوی_محبوب_رستوران"
 
     def __str__(self):
-            return self.عنوان_غذا
+            return str(self.شناسه)
 
 class درباره_ما(models.Model):
     شناسه = models.AutoField(primary_key=True)
