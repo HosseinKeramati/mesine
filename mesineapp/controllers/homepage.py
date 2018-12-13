@@ -59,10 +59,10 @@ def favorite(request):
             print(ban)
             x = رسانه.objects.filter(حذف = 0 , شناسه =ban[0]['شناسه'])
             print(x.values())
-            media['image'] = x[i].فایل.name
-            media['caption']=x[i].توضیح
+            media['image'] = x[0].فایل.name
+            media['caption']=x[0].توضیح
             media['title'] = favorite[i].عنوان_غذا.عنوان
-            media['alt'] = x[i].جایگزین
+            media['alt'] = x[0].جایگزین
             banner_list.append({
             'media' : media,
             'banner_info' : banners
